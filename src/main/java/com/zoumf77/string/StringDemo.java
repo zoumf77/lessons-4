@@ -1,5 +1,9 @@
 package com.zoumf77.string;
 
+/*
+ * https://blog.csdn.net/qauchangqingwei/article/details/80831797
+ * 感谢大神qauchangqingwei
+ */
 public class StringDemo {
 	public static void main(String[] args){
 		
@@ -14,11 +18,11 @@ public class StringDemo {
 		System.out.println("s_new"+s_new);
 		
 		StringBuilder sb=new StringBuilder("abc");
-		/*
+		
 		sb.append("edf"); //sb的值发生变化
 		
 		System.out.println("sb="+sb);
-		*/
+		
 		StringBuilder sb1=new StringBuilder("abc");
 		System.out.println("sb.equals(sb1)"+sb.equals(sb1));
 		
@@ -36,6 +40,13 @@ public class StringDemo {
 		
 		System.out.println("s3.equals(s4):"+s3.equals(s4));
 		
+		//intern()方法返回字符串"abc"的实例，字符串池中只要一个实例。
+		//s3和s4是不同的引用对象，地址不一样.
+		//这是享元模式设计方法，共享一个相同对象，而不用再创造一个。
+		//可以参考一下Effective Java(3 edition) 第一条 
+		System.out.println("s3.intern()==s4.intern():"+(s3.intern()==s4.intern()));
+		
+		
 		//看看Object的源代码
 		Object o;
 		
@@ -46,14 +57,14 @@ public class StringDemo {
 		
 		  String str1="abc";   
 		  String str2="def";   
-		  //String str3=str1+str2;
+		  //String str3=str1+str2;可以关注下，这句和下句str3的不同之处;
 		  String str3="abc"+"def";
 		  System.out.println("===========test5============");
-		  System.out.println(str3=="abcdef"); //false
+		  System.out.println("(str3==\"abcdef\")"+(str3=="abcdef")); //false
 		
 		  StringBuffer sb10=new StringBuffer("123");
 		  sb10.append("456");
-		  
+		  System.out.println("sb10="+sb10);
 		 
 	}
 }
